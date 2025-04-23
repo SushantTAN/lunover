@@ -1,15 +1,21 @@
+'use client';
+
 import Link from "next/link";
+import Image from "next/image";
 
 const Section1 = () => {
   return (
     <section className="mb-20">
-      <picture>
-        <img
-          src="images/band-performance.png"
-          className="w-full h-[calc(100vh-200px)] object-cover mb-7 animate-fade-in"
+      <div className="relative w-full h-[calc(100vh-200px)] mb-7 animate-fade-in">
+        <Image
+          src="/images/band-performance.png"
           alt="band"
+          fill
+          priority
+          className="object-cover"
         />
-      </picture>
+      </div>
+
       <div className="px-4 text-center">
         <h2 className="text-white text-center font-normal text-[70px] mb-8">
           1 festival • 5 dagar • 6 områden
