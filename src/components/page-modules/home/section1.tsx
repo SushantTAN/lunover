@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Section1 = () => {
   return (
-    <section className="mb-6">
+    <section className="mb-20">
       <picture>
         <img
           src="images/band-performance.png"
