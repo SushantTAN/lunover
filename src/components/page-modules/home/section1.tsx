@@ -1,11 +1,17 @@
+import BoxLoader from "@/components/loader/box-loader";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import HomeVideoBanner from "./home-video";
+
+const HomeVideoBanner = dynamic(() => import("./home-video"), {
+  loading: () => <div className="flex justify-center py-12">
+    <BoxLoader />
+  </div>,
+});
 
 const Section1 = () => {
   return (
     <section className="mb-24">
       <HomeVideoBanner />
-
 
       <div className="px-4 text-center">
         <h2 className="text-white font-normal mb-12 text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] leading-tight">

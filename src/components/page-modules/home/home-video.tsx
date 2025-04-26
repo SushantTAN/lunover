@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import play from "@/assets/svgs/play.svg";
 import Image from "next/image";
+import { cn } from "@/utils/tailwind";
 
 const VideoBanner: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isVideoVisible, setIsVideoVisible] = useState<boolean>(false);
 
   const handleVideoClick = (): void => {
     if (!videoRef.current) return;
@@ -39,10 +41,12 @@ const VideoBanner: React.FC = () => {
             setIsPlaying(false);
           }
         }
+
+        if (entry.isIntersecting) {
+          setIsVideoVisible(true);
+        }
       },
-      {
-        threshold: 0.5,
-      }
+      { threshold: 0.5 }
     );
 
     if (currentContainer) {
@@ -56,7 +60,6 @@ const VideoBanner: React.FC = () => {
     };
   }, [isClicked]);
 
-
   return (
     <div
       ref={containerRef}
@@ -69,12 +72,20 @@ const VideoBanner: React.FC = () => {
         muted
         loop
         playsInline
-        className="w-full h-full object-cover cursor-pointer"
+        className={cn(
+          "w-full h-full object-cover cursor-pointer transition-opacity duration-1000 ease-in-out",
+          isVideoVisible ? "opacity-100" : "opacity-0"
+        )}
       />
 
       {!isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-          <div className="bg-[#242424] h-12 w-12 rounded-full shadow-lg animate-fade-in grid place-items-center pl-1">
+        <div
+          className={cn(
+            "absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-1000 ease-in-out",
+            isVideoVisible ? "opacity-100" : "opacity-0"
+          )}
+        >
+          <div className="bg-[#242424] h-12 w-12 rounded-full shadow-lg grid place-items-center pl-1">
             <Image src={play} height={20} width={20} alt="play" />
           </div>
         </div>

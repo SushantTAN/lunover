@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "@/utils/tailwind";
 
 import threeLines from "@/assets/svgs/three-horizontal-lines.svg";
+import Link from "next/link";
 
 const Header = () => {
   const [atTop, setAtTop] = useState(true);
@@ -31,9 +32,9 @@ const Header = () => {
             priority
           />
         </div>
-
-        <h1 className="text-2xl sm:text-3xl font-semibold z-10">FRI ENTRÉ</h1>
-
+        <Link href={"/"}>
+          <h1 className="text-2xl sm:text-3xl font-semibold z-10">FRI ENTRÉ</h1>
+        </Link>
         <div
           className={cn(
             "transition-all duration-300 overflow-hidden z-10 hidden lg:block",
