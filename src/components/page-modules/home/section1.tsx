@@ -1,18 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
+import HomeVideoBanner from "./home-video";
 
 const Section1 = () => {
   return (
     <section className="mb-24">
-      <div className="relative w-full h-[calc(100vh-200px)] sm:h-[60vh] mb-7 animate-fade-in">
-        <Image
-          src="/images/band-performance.png"
-          alt="band"
-          fill
-          priority
-          className="object-cover"
-        />
-      </div>
+      <HomeVideoBanner />
+
 
       <div className="px-4 text-center">
         <h2 className="text-white font-normal mb-12 text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] leading-tight">
