@@ -8,7 +8,7 @@ const HomeVideoBanner = dynamic(() => import("./home-video"), {
   </div>,
 });
 
-const Section1 = () => {
+const Section1: React.FC = () => {
   return (
     <section className="mb-24">
       <HomeVideoBanner />
